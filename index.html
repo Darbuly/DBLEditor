@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>DBLEditor使用案例</title>
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
+		
+		<link rel="stylesheet" href="./ckeditor/plugins/uploadImages/css/bootstrap.css">
+		<link rel="stylesheet" href="./ckeditor/plugins/uploadImages/css/cropper.css">
+		<script src="./ckeditor/plugins/uploadImages/js/loader.config.js"></script>
+		
+	</head>
+	<style type="text/css">
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 50%;
+    margin: 1.75rem auto;
+  }}
+    .img-container img {
+      max-width: 100%;
+    }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.preview {
+      overflow: hidden;}
+.docs-data > .input-group {
+    margin-bottom: .5rem;
+}
+	</style>
+	<body>
+		
+		<div style="display: none;"><input type="file" class="sr-only" id="editFileInput" name="file"  accept="image/*"></div>
+		<textarea id="editor" name="editor" rows="10" cols="80">
+		This is my textarea to be replaced with DBLEditor.
+		</textarea>
+		<!-- 提示信息 -->
+		<div class="alert" role="alert"></div>
+		<!-- 模态框 开始 -->
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalLabel">剪裁图片</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-7">
+								<div class="img-container">
+									<img id="image" src="./ckeditor/plugins/uploadImages/images/upload.png">
+								</div>
+							</div>
+							<div class="col-md-3">
+<div class="docs-data">
+          <div class="input-group input-group-sm">
+            <span class="input-group-prepend">
+              <label class="input-group-text" for="dataQuality">Quality</label>
+            </span>
+
+            <input type="text" class="form-control" id="dataQuality" placeholder="100" value="100">
+            <span class="input-group-append">
+              <span class="input-group-text">%</span>
+            </span>
+          </div>
+          
+          <div class="input-group input-group-sm">
+            <span class="input-group-prepend">
+              <label class="input-group-text" for="dataWidth">Width</label>
+            </span>
+            <input type="text" class="form-control" id="dataWidth" placeholder="width">
+            <span class="input-group-append">
+              <span class="input-group-text">px</span>
+            </span>
+          </div>
+          <div class="input-group input-group-sm">
+            <span class="input-group-prepend">
+              <label class="input-group-text" for="dataHeight">Height</label>
+            </span>
+            <input type="text" class="form-control" id="dataHeight" placeholder="height">
+            <span class="input-group-append">
+              <span class="input-group-text">px</span>
+            </span>
+          </div>
+          
+</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" id="crop">确定剪裁并上传</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 模态框结束 -->
+	</body>
+	<script>
+	$(function(){
+	$(".alert").hide();
+	window.message=new Array("alert-success","成功");
+	var editor=CKEDITOR.replace('editor');
+	
+	// editor.on( 'paste', function( evt ) {//根据内容来
+	//     var rtf = evt.data.dataTransfer.getData( 'text/html' );
+	//     console.log(rtf);
+	// } );
+	});
+	</script>
+	<script src="./ckeditor/plugins/uploadImages/js/cropper.js"></script>
+	<script src="./ckeditor/plugins/uploadImages/js/bootstrap.js"></script>
+	<script src="./ckeditor/plugins/uploadImages/js/canvas-to-blob.js"></script>
+</html>
